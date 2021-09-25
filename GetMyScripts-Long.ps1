@@ -6,7 +6,7 @@ Function Get-MyScript
         [string]$AFile,
         [string]$SaveLocation = "$env:USERPROFILE\Downloads\", 
 		[switch]$EditFile = $False )
-        Invoke-Webrequest -Uri "https://raw.githubusercontent.com/LucDorpmans/TestRepo/main/$AFile"  -Outfile "$SaveLocation$AFile" 
+        Invoke-Webrequest -Uri "https://raw.githubusercontent.com/LucDorpmans/My-55039-Repo/main/$AFile"  -Outfile "$SaveLocation$AFile" 
 		If ($EditFile) { PSEdit  ("$SaveLocation$AFile" )} }
 
 Get-MyScript "EdgeMSI-Download-Only-Complete.ps1"
