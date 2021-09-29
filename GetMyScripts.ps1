@@ -8,6 +8,8 @@ Get-MyScript "EdgeMSI-Download-Only-Complete.ps1" -EditFile
 Get-MyScript "Edge-InstallOnly.ps1" -EditFile
 Get-MyScript "Chrome-Download+Run-Installer.ps1" -EditFile
 Get-MyScript "PowerShell-Core-7.1.4-Download+Install.ps1" -EditFile
+Get-MyScript "NuGet+PSGallery.ps1" -EditFile
+
 
 # Get Install-VSCode script"
 Invoke-Webrequest -Uri "https://raw.githubusercontent.com/PowerShell/vscode-powershell/master/scripts/Install-VSCode.ps1" -Outfile "$env:USERPROFILE\Downloads\Install-VSCode.ps1"

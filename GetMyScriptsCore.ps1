@@ -4,4 +4,5 @@ Function Get-MyScript { Param( [string]$AFile,[switch]$EditFile = $False,
 			Invoke-Webrequest -Uri "https://raw.githubusercontent.com/LucDorpmans/My-55039-Repo/main/$AFile"  -Outfile "$SPath$AFile" 
 			If ($EditFile) { Notepad  ("$SPath$AFile" )} }
 		
-Get-MyScript "PowerShell-Core-Download+Install.ps1" 
+Get-MyScript "PowerShell-7.1.4-Core-Download+Install.ps1" 
+Get-MyScript "NuGet+PSGallery.ps1" 

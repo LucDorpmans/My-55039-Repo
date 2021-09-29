@@ -12,4 +12,5 @@ Function Get-MyScript
 Get-MyScript "EdgeMSI-Download-Only-Complete.ps1"
 Get-MyScript "Edge-InstallOnly.ps1"
 Get-MyScript "Chrome-Download+Run-Installer.ps1"
-Get-MyScript "Download+Install+PowerShell-Core.ps1" -EditFile
+Get-MyScript "PowerShell-Core-7.1.4-Download+Install.ps1" -EditFile
+Get-MyScript "NuGet+PSGallery.ps1" -EditFile
