@@ -1,15 +1,17 @@
-#[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls" # For older Windows versions
-If (!(Get-PackageProvider -Name Nuget)) { Install-PackageProvider nuget -Force } 
-Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-Find-Module xDSC*
-# Install-Module xPSDesiredStateConfiguration -Verbose -Repository PSGallery
-Install-Module xDscDiagnostics -Verbose -Repository PSGallery
+# Unattended install of NuGet repository, and set PSGallery to be a Trusted repository
+If ((Get-PackageProvider -Name Nuget)) {
+    $NuProv = Get-PackageProvider -Name Nuget
+    Write-Verbose "NuGet PackageProvider version $($NuProv.Version) installed and approved" 
+} 
+Else {
+    Write-Verbose "Not installed, installing"
+    { Install-PackageProvider nuget -Force } 
+    Write-Verbose "Installed  (if no errors)"
+}
 
-# Get-DscResource
-
-If (!(Get-PackageProvider -Name Nuget)) {Write-Output "Yes"} else {Write-Output "No"}
-
-$NuProv = Get-PackageProvider -Name Nuget
-$NuProv.Version
-
+If ( !(Get-PSRepository PSGallery).InstallationPolicy -eq "Trusted" )  {
+    Write-Verbose "{PsGallery not yet trusted, trying to approve"
+    Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+ } 
+Else { Write-Verbose "PsGallery already trusted" }
 
