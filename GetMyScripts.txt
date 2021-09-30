@@ -6,4 +6,3 @@ $Repo = "My-55039-Repo"
 $Script = "GetMyScripts.ps1"
 Invoke-Webrequest -Uri "https://raw.githubusercontent.com/LucDorpmans/$Repo/main/$MyScript"  -Outfile "$env:USERPROFILE\Downloads\$Script"
 PSEdit  ("$env:USERPROFILE\Downloads\$Script")
-
