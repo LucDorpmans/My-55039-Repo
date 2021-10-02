@@ -1,4 +1,5 @@
 # Unattended install of NuGet repository, and set PSGallery to be a Trusted repository
+$OrgVerbosePreference = $VerbosePreference 
 $VerbosePreference = "Continue"
 
 If ((Get-PackageProvider -Name PowerShellGet -ListAvailable)) {
@@ -19,6 +20,4 @@ Else {
     Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
  }
 
-
-
-
+ $VerbosePreference = $OrgVerbosePreference 
