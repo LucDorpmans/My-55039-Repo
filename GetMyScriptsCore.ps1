@@ -6,3 +6,4 @@ Function Get-MyScript { Param( [string]$AFile,[switch]$EditFile = $False,
 		
 Get-MyScript "PowerShell-7.1.4-Core-Download+Install.ps1" 
 Get-MyScript "NuGet+PSGallery.ps1" 
+Get-MyScript "55039-Install-Modules.ps1" 
