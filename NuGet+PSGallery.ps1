@@ -12,7 +12,6 @@ Else {
     Write-Verbose "Installed  (if no errors)"
 }
 
-
 If ( (Get-PSRepository PSGallery).InstallationPolicy -eq "Trusted" )  {
     Write-Verbose "PsGallery already trusted" } 
 Else { 
