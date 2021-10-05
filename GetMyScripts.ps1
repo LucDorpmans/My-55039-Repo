@@ -5,7 +5,6 @@ Function Get-MyScript { Param( [string]$AFile,[switch]$EditFile = $False,
 			If ($EditFile) { PSEdit  ("$SPath$AFile" )} }
 		
 Get-MyScript "PowerShell-Core-7.1.4-Download+Install.ps1" -EditFile
-Get-MyScript "VSCode-Download+Install.ps1"
 Get-MyScript "55039-Install-Modules.ps1" -EditFile
 Get-MyScript "NuGet+PSGallery.ps1" -EditFile
 
