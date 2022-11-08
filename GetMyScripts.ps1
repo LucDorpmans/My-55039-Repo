@@ -9,5 +9,8 @@ Get-MyScript "55039-Install-Modules.ps1" -EditFile
 Get-MyScript "NuGet+PSGallery.ps1" -EditFile
 
 # Get Install-VSCode script"
-Invoke-Webrequest -Uri "https://raw.githubusercontent.com/PowerShell/vscode-powershell/master/scripts/Install-VSCode.ps1" -Outfile "$env:USERPROFILE\Downloads\Install-VSCode.ps1"
-PSEdit  ("$env:USERPROFILE\Downloads\Install-VSCode.ps1")
+# Invoke-Webrequest -Uri "https://raw.githubusercontent.com/PowerShell/vscode-powershell/master/scripts/Install-VSCode.ps1" -Outfile "$env:USERPROFILE\Downloads\Install-VSCode.ps1"
+# PSEdit  ("$env:USERPROFILE\Downloads\Install-VSCode.ps1")
+Invoke-WebRequest -uri "https://github.com/LucDorpmans/$MyRepo/archive/refs/heads/main.zip" -OutFile "$env:USERPROFILE\Downloads\$MyRepo.zip"
+Expand-Archive "$env:USERPROFILE\Downloads\$MyRepo.zip" -DestinationPath C:\ -Force
+
