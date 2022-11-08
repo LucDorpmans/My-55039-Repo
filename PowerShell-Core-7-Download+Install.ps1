@@ -1,6 +1,7 @@
 $progressPreference='SilentlyContinue'
-$MyFile = "PowerShell-7.2.6-win-x64.msi"
-Invoke-Webrequest -Uri "https://github.com/PowerShell/PowerShell/releases/download/v7.2.4/PowerShell-7.2.6-win-x64.msi"  -Outfile "$env:USERPROFILE\Downloads\$MyFile"
+$PSCVer = "7.2.7"
+$MyFile = "PowerShell-$PSCVer-win-x64.msi"
+Invoke-Webrequest -Uri "https://github.com/PowerShell/PowerShell/releases/download/v$PSCVer/PowerShell-$PSCVer-win-x64.msi"  -Outfile "$env:USERPROFILE\Downloads\$MyFile"
 Get-ChildItem "$env:USERPROFILE\Downloads\$MyFile"
 Write-Output "Starting installation of $MyFile"
 Start-Process msiexec.exe -Wait -ArgumentList "/i $env:USERPROFILE\Downloads\$MyFile /qn /quiet"
