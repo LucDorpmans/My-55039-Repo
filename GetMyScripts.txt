@@ -4,5 +4,5 @@
 #[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls" # Only for older Windows versions
 $MyRepo = "My-55039-Repo"
 $Script = "GetMyScripts.ps1"
-Invoke-Webrequest -Uri "https://raw.githubusercontent.com/LucDorpmans/$Repo/main/$Script"  -Outfile "$env:USERPROFILE\Downloads\$Script"
+Invoke-Webrequest -Uri "https://raw.githubusercontent.com/LucDorpmans/$MyRepo/main/$Script"  -Outfile "$env:USERPROFILE\Downloads\$Script"
 PSEdit  ("$env:USERPROFILE\Downloads\$Script")
