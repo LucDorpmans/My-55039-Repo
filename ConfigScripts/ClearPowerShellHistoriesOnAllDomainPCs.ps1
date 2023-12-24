@@ -1,5 +1,5 @@
 ﻿Write-Output "Clearing PowerShell Histories on:"
-Invoke-Command -ComputerName Alpha,Bravo,Charly,Echo -ScriptBlock {
+Invoke-Command -ComputerName Alpha,Bravo,Charly,Delta,Echo,Foxtrot -ScriptBlock {
     Write-Output $($ENV:COMPUTERNAME)
     # Clear PowerShell Console History:
     Remove-Item "$ENV:UserProfile\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt" -ErrorAction SilentlyContinue

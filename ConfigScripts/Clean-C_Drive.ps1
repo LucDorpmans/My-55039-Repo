@@ -108,7 +108,7 @@ $ScriptBlock =
     param($ProfileAge,$CleanCCMCache)
     
     write-output "Calculating current disk usage on C:\..."
-    $FreespaceBefore = (Get-WmiObject win32_logicaldisk -filter "DeviceID='C:'" | Select Freespace)
+    $FreespaceBefore = (Get-WmiObject win32_logicaldisk -filter "DeviceID='C:'" | Select-Object Freespace)
     write-output ("Disk C:\ has [{0:N2}" -f ($FreespaceBefore.Freespace/1GB) + "] Gb available.")
     
     if ($CleanCCMCache)
@@ -146,19 +146,19 @@ $ScriptBlock =
     write-output "Starting DISM Cleanup (might take a while)..."
     if ([Environment]::OSVersion.Version -lt (new-object 'Version' 6,2))
     { 
-        iex "Dism.exe /online /Cleanup-Image /SpSuperseded"
+        Invoke-Expression "Dism.exe /online /Cleanup-Image /SpSuperseded"
     }
     else
     { 
-        iex "Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase"
+        Invoke-Expression "Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase"
     }
         
     write-output "Starting System Restore Points Cleanup..."
-    iex "vssadmin.exe Delete Shadows /ALL /Quiet"
+    Invoke-Expression "vssadmin.exe Delete Shadows /ALL /Quiet"
         
     write-output "Starting User Profile Cleanup..."
     write-output "Checking for user profiles that are older than [$ProfileAge] days..."
-    gwmi -Class Win32_UserProfile | where {-not $_.Special} | foreach {
+    gwmi -Class Win32_UserProfile | Where-Object {-not $_.Special} | ForEach-Object {
         $Profile = $_
         try
         {
@@ -248,7 +248,7 @@ $ScriptBlock =
     write-output "Process ended with exitcode [$($Process.ExitCode)]."         
 
     write-output "Calculating disk usage on C:\..."
-    $FreespaceAfter = (Get-WmiObject win32_logicaldisk -filter "DeviceID='C:'" | Select Freespace)
+    $FreespaceAfter = (Get-WmiObject win32_logicaldisk -filter "DeviceID='C:'" | Select-Object Freespace)
     write-output ("Disk C:\ now has [{0:N2}" -f ($FreeSpaceAfter.freespace/1GB) + "] Gb available.")
     write-output ("[{0:N2}" -f (($FreespaceAfter.freespace-$FreespaceBefore.freespace)/1GB) + "] Gb has been liberated on C:\.")    
 }
