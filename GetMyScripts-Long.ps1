@@ -10,6 +10,6 @@ Function Get-MyScript
 		If ($EditFile) { PSEdit  ("$SaveLocation$AFile" )} }
 
 
-Get-MyScript "PowerShell-Core-7.1.4-Download+Install.ps1" -EditFile
+Get-MyScript "PowerShell-Core-7-Download+Install.ps1" -EditFile
 Get-MyScript "55039-Install-Modules" -EditFile
 Get-MyScript "NuGet+PSGallery.ps1" -EditFile
